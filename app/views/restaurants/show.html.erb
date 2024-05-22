@@ -1,0 +1,20 @@
+<div class="col-6">
+  <h1 class="border-bottom"><%= @restaurant.name %></h1>
+  <p><%= link_to("Add a review", new_restaurant_review_path(@restaurant)) %></p>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.category %></p>
+</div>
+
+<div class="col-6">
+  <h2>Reviews</h2>
+  <p class="border-bottom">
+    <% @restaurant.reviews.reverse.each do |review| %>
+    <li class="list-group-item">Rating: <%= review.rating %> <br><%= review.content %><br>Posted on: <%= review.created_at.strftime "%d/%m/%Y %Hh%M" %></li>
+  <% end %>
+  </p>
+</div>
+
+
+
+<%= link_to("Back to homepage", restaurants_path) %>
